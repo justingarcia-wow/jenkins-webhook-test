@@ -14,6 +14,7 @@ pipeline {
       }
       steps {
         echo "PR desde ${env.CHANGE_BRANCH} hacia ${env.CHANGE_TARGET}"
+        error("fallo intencional")
       }
     }
   }

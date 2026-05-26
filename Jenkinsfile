@@ -1,11 +1,10 @@
-@"
 pipeline {
   agent any
 
   stages {
     stage('Build') {
       steps {
-        echo "Corriendo en rama: \${env.BRANCH_NAME}"
+        echo "Corriendo en rama: ${env.BRANCH_NAME}"
       }
     }
 
@@ -14,7 +13,8 @@ pipeline {
         changeRequest()
       }
       steps {
-        echo "PR desde \${env.CHANGE_BRANCH} hacia \${env.CHANGE_TARGET}"
+        echo "PR desde ${env.CHANGE_BRANCH} hacia ${env.CHANGE_TARGET}"
+        error("fallo intencional")
       }
     }
   }
@@ -24,4 +24,3 @@ pipeline {
     failure { echo "Pipeline rojo" }
   }
 }
-"@ | Out-File -FilePath Jenkinsfile -Encoding utf8
